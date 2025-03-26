@@ -69,7 +69,6 @@ export default tseslint.config(
         {
           selector: 'interface',
           format: ['PascalCase'],
-          prefix: ['I'],
         },
         {
           selector: 'typeAlias',
