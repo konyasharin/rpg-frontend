@@ -1,7 +1,10 @@
 import { FC } from 'react';
+import { FullscreenButton } from '@modules/ui';
+
+import './styles.css';
 
 const App: FC = () => {
-  return <>123</>;
+  return <FullscreenButton />;
 };
 
 export default App;
