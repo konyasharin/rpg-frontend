@@ -4,6 +4,7 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import prettier from 'eslint-plugin-prettier'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
+import boundaries from 'eslint-plugin-boundaries'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
@@ -20,6 +21,7 @@ export default tseslint.config(
       'react-refresh': reactRefresh,
       'prettier': prettier,
       'simple-import-sort': simpleImportSort,
+      'boundaries': boundaries,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -127,6 +129,38 @@ export default tseslint.config(
         }
       ],
       "lines-between-class-members": ["error", "always"],
+      'boundaries/element-types': [
+        'error',
+        {
+          'default': 'allow',
+          'rules': [
+            {
+              'from': 'modules',
+              'disallow': [
+                'app',
+              ],
+              'message': 'import in modules scope from app is forbidden'
+            },
+            {
+              'from': 'core',
+              'disallow': [
+                'app',
+                'modules',
+              ],
+              'message': 'import in core scope from app, shared is forbidden'
+            },
+            {
+              'from': 'shared',
+              'disallow': [
+                'app',
+                'modules',
+                'core',
+              ],
+              'message': 'import in shared scope from app, modules, core is forbidden'
+            },
+          ]
+        }
+      ],
     },
     settings: {
       'import/resolver': {
