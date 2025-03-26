@@ -80,7 +80,7 @@ export default tseslint.config(
         },
         {
           selector: 'classMethod',
-          format: ['PascalCase'],
+          format: ['camelCase'],
         },
         {
           selector: 'classProperty',
